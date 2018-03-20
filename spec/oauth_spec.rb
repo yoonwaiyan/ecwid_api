@@ -10,7 +10,7 @@ describe EcwidApi::OAuth do
     end
   end
 
-  its(:oauth_url) { should == "https://my.ecwid.com/api/oauth/authorize?client_id=client_id&scope=scope&response_type=code&redirect_uri=https%3A%2F%2Fexample.com%2Foauth" }
+  it { expect(subject.oauth_url).to eq "https://my.ecwid.com/api/oauth/authorize?client_id=client_id&scope=scope&response_type=code&redirect_uri=https%3A%2F%2Fexample.com%2Foauth" }
 
   describe "#access_token(code)" do
     let(:response) do

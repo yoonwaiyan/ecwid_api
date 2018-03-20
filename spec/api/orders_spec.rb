@@ -14,13 +14,13 @@ describe EcwidApi::Api::Orders, faraday: true do
     end
 
     it "gets EcwidApi::Order types" do
-      subject.all.all? { |order| order.is_a?(EcwidApi::Order) }.should be_true
+      subject.all.all? { |order| order.is_a?(EcwidApi::Order) }.should be true
     end
   end
 
   describe "#find" do
     it "is an `EcwidApi::Order`" do
-      subject.find(35).is_a?(EcwidApi::Order).should be_true
+      subject.find(35).is_a?(EcwidApi::Order).should be true
     end
 
     it "is nil when not found" do

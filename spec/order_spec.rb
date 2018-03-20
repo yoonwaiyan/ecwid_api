@@ -1,3 +1,4 @@
+
 require 'spec_helper'
 
 describe EcwidApi::Order, faraday: true do
@@ -17,10 +18,10 @@ describe EcwidApi::Order, faraday: true do
 
   let(:shipping_person) { nil }
 
-  its(:id) { should == 123 }
+  it { expect(subject.id).to eq 123 }
 
   describe "#billing_person" do
-    its(:billing_person) { should be_a(EcwidApi::Person) }
+    it { expect(subject.billing_person).to be_a(EcwidApi::Person) }
 
     it "has the correct data" do
       subject.billing_person.name.should == "John Doe"
@@ -28,11 +29,11 @@ describe EcwidApi::Order, faraday: true do
   end
 
   describe "#shipping_person" do
-    its(:shipping_person) { should be_a(EcwidApi::Person) }
+    it { expect(subject.shipping_person).to be_a(EcwidApi::Person) }
 
     context "without a shipping person" do
       let(:shipping_person) { nil }
-      its(:shipping_person) { should == subject.billing_person }
+      it { expect(subject.shipping_person).to eq subject.billing_person }
     end
 
     context "with a shipping person" do

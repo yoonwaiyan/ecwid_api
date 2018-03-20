@@ -4,7 +4,7 @@ describe EcwidApi::Client do
   subject { client }
 
   describe "#store_url" do
-    its(:store_url) { "http://app.ecwid.com/api/v3/12345" }
+    it { expect(subject.store_url).to eq "https://app.ecwid.com/api/v3/12345" }
   end
 
   describe "#get", faraday: true do
@@ -15,7 +15,7 @@ describe EcwidApi::Client do
     end
 
     it "returns a Faraday::Response" do
-      subject.get("categories", parent: 1).is_a?(Faraday::Response).should be_true
+      subject.get("categories", parent: 1).is_a?(Faraday::Response).should be true
     end
   end
 end

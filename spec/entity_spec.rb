@@ -34,11 +34,11 @@ describe EcwidApi::Entity do
   subject { EntitySubject.new(data) }
 
   describe "::url_root" do
-    its(:url) { should == "stuff/123" }
+    it { expect(subject.url).to eq "stuff/123" }
 
     context "with a proc" do
       subject { EntityUrlSubject.new(data) }
-      its(:url) { should == "parent/456/and/123" }
+      it { expect(subject.url).to eq "parent/456/and/123" }
     end
   end
 
@@ -62,7 +62,7 @@ describe EcwidApi::Entity do
   end
 
   describe "overrides" do
-    its(:override) { should == "UPCASE ME" }
+    it { expect(subject.override).to eq "UPCASE ME" }
   end
 
   describe "accessors" do
